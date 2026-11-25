@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>PIZZARIUM | Menú Digital</title>
+<style>
+:root{--gold:#e6a653;--bg:#090909;--panel:#141414;--text:#f5f3ef;--muted:#b9b5ae}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at top,#222 0,#090909 38rem);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{padding:34px 18px 24px;text-align:center;background:linear-gradient(180deg,#050505,transparent)}
+.brand{display:inline-block;border:1px solid var(--gold);padding:15px 25px 12px;position:relative;letter-spacing:3px}
+.brand:before,.brand:after{content:"";position:absolute;inset:5px -5px -5px 5px;border:1px solid #f3f3f3;pointer-events:none}
+.brand h1{font-size:clamp(28px,8vw,46px);margin:0;font-weight:900;line-height:1}
+.brand p{margin:9px 0 0;color:var(--gold);font-size:12px;letter-spacing:4px}
+.tagline{color:var(--muted);margin:22px 0 0;font-size:14px}
+nav{position:sticky;top:0;z-index:10;background:#090909eF;backdrop-filter:blur(12px);border-block:1px solid #272727;padding:10px;display:flex;gap:8px;overflow:auto;justify-content:flex-start}
+nav a{white-space:nowrap;text-decoration:none;color:#eee;border:1px solid #353535;border-radius:999px;padding:9px 14px;font-size:13px}
+nav a:hover,nav a:focus{border-color:var(--gold);color:var(--gold)}
+main{max-width:920px;margin:auto;padding:16px}
+.intro{margin:8px 0 22px;text-align:center;color:var(--muted);font-size:14px}
+section{margin:25px 0 32px}
+.section-title{display:flex;align-items:center;gap:12px;margin:0 0 13px}
+.section-title h2{margin:0;font-size:23px;letter-spacing:1px}
+.section-title span{height:1px;background:linear-gradient(90deg,var(--gold),transparent);flex:1}
+.menu-card{background:var(--panel);border:1px solid #2c2c2c;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px #0005}
+.menu-card img{width:100%;display:block;height:auto;cursor:zoom-in}
+.note{color:var(--muted);font-size:12px;text-align:center;margin:9px 0 0}
+footer{text-align:center;padding:35px 18px 45px;color:var(--muted);border-top:1px solid #292929}
+footer strong{color:var(--gold);letter-spacing:2px}
+.top{position:fixed;bottom:18px;right:16px;background:var(--gold);color:#111;border:0;border-radius:50%;width:45px;height:45px;font-size:20px;font-weight:bold;box-shadow:0 5px 20px #0007;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:#000e;z-index:30;align-items:center;justify-content:center;padding:12px}
+.modal.open{display:flex}
+.modal img{max-width:100%;max-height:95vh;object-fit:contain}
+.modal button{position:absolute;top:12px;right:15px;background:#222;color:white;border:1px solid #777;border-radius:50%;width:42px;height:42px;font-size:24px}
+@media(min-width:700px){main{padding:24px 28px}.menu-card{max-width:700px;margin:auto}.section-title h2{font-size:27px}nav{justify-content:center}}
+</style>
+</head>
+<body>
+<header id="top">
+  <div class="brand"><h1>PIZZARIUM</h1><p>MENÚ DIGITAL</p></div>
+  <p class="tagline">Pizza · Burgers · Alitas · Mucho sabor</p>
+</header>
+<nav aria-label="Categorías del menú">
+  <a href="#pizza">🍕 Pizzas</a>
+  <a href="#burgers">🍔 Burgers</a>
+  <a href="#alitas">🍗 Alitas & Salchipapas</a>
+  <a href="#milanesas">🥩 Milanesas</a>
+</nav>
+<main>
+<p class="intro">Explora nuestro menú. Toca cualquier imagen para ampliarla y ver todos los detalles.</p>
+<section id="pizza">
+  <div class="section-title"><h2>🍕 Pizzas</h2><span></span></div>
+  <div class="menu-card"><img src="assets/pizza-menu.jpg" alt="Menú de pizzas PIZZARIUM" onclick="openImage(this)"></div>
+  <p class="note">Toca la imagen para ampliar</p>
+</section>
+<section id="burgers">
+  <div class="section-title"><h2>🍔 Burgers</h2><span></span></div>
+  <div class="menu-card"><img src="assets/burgers.jpg" alt="Menú de hamburguesas PIZZARIUM" onclick="openImage(this)"></div>
+  <p class="note">Toca la imagen para ampliar</p>
+</section>
+<section id="alitas">
+  <div class="section-title"><h2>🍗 Alitas & Salchipapas</h2><span></span></div>
+  <div class="menu-card"><img src="assets/alitas-salchipapas.jpg" alt="Menú de alitas y salchipapas PIZZARIUM" onclick="openImage(this)"></div>
+  <p class="note">Toca la imagen para ampliar</p>
+</section>
+<section id="milanesas">
+  <div class="section-title"><h2>🥩 Milanesas</h2><span></span></div>
+  <div class="menu-card"><img src="assets/milanesas.jpg" alt="Menú de milanesas PIZZARIUM" onclick="openImage(this)"></div>
+  <p class="note">Toca la imagen para ampliar</p>
+</section>
+<section>
+  <div class="section-title"><h2>✨ Nuestra propuesta</h2><span></span></div>
+  <div class="menu-card"><img src="assets/pizza-portada.jpg" alt="Pizza PIZZARIUM" onclick="openImage(this)"></div>
+</section>
+</main>
+<footer><strong>PIZZARIUM</strong><br>Menú Digital<br><small>Escanea · Explora · Disfruta</small></footer>
+<button class="top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="modal" id="modal" onclick="closeImage()"><button aria-label="Cerrar" onclick="closeImage()">×</button><img id="modalImage" alt="Imagen ampliada"></div>
+<script>
+function openImage(img){const m=document.getElementById('modal');document.getElementById('modalImage').src=img.src;m.classList.add('open')}
+function closeImage(){document.getElementById('modal').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeImage()});
+</script>
+</body>
+</html>
